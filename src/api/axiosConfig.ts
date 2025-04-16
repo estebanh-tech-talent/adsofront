@@ -6,6 +6,9 @@ const apiURL = {
   INTERNAL: import.meta.env.VITE_API_URL_INTERNAL,
 }
 
+console.log(import.meta.env.RAILWAY_PRIVATE_DOMAIN)
+console.log(import.meta.env.VITE_RAILWAY_PRIVATE_DOMAIN)
+
 const env = import.meta.env.VITE_MODE as keyof typeof apiURL
 
 // const apiURL =
