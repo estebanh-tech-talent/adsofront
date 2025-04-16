@@ -20,7 +20,8 @@ console.log(`API URL: ${apiURL[env]}`)
 console.log(`Environment: ${env}`)
 
 const axiosInstance = axios.create({
-  baseURL: apiURL[env],
+  // baseURL: apiURL[env],
+  baseURL: 'http://fastapiadso.railway.internal',
   headers: {
     'Content-Type': 'application/json',
   },
