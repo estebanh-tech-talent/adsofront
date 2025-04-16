@@ -15,10 +15,10 @@ import { RouterLink, RouterView } from 'vue-router'
     "
   >
     <h1 style="font-size: 3rem; color: #4caf50; margin-bottom: 1rem">
-      Bienvenido al Sistema de Información ADSO 2025
+      Bienvenido al Sistema de Información ADSO 2025 - CBA
     </h1>
     <RouterLink
-      to="/items"
+      to="/students"
       style="
         padding: 1rem 2rem;
         font-size: 1.2rem;

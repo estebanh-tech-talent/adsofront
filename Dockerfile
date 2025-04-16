@@ -1,12 +1,12 @@
-FROM node:23-alpine
-RUN npm install -g http-server
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-# RUN npm run dev
-EXPOSE 5777
-CMD ["npm", "run", "dev"]
+# FROM node:23-alpine
+# RUN npm install -g http-server
+# WORKDIR /app
+# COPY package*.json ./
+# RUN npm install
+# COPY . .
+# # RUN npm run dev
+# EXPOSE 5777
+# CMD ["npm", "run", "dev"]
 # CMD ["http-server", "dist", "-p", "5777", "-o"]
 
 # ETAPA DE CONSTRUCCIÓN
@@ -20,12 +20,12 @@ CMD ["npm", "run", "dev"]
 # y mejorar la seguridad
 # Usamos la imagen de Node.js 23 en Alpine
 
-# FROM node:23-alpine AS builder
-# WORKDIR /app
-# COPY package*.json ./
-# RUN npm install
-# COPY . .
-# RUN npm run build
+FROM node:23-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 
 
 # ETAPA DE PRODUCCIÓN
@@ -36,10 +36,10 @@ CMD ["npm", "run", "dev"]
 # Usamos la imagen de Nginx estable en Alpine
 
 
-# FROM nginx:stable-alpine
+FROM nginx:stable-alpine
 
-# COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# EXPOSE 8081
+EXPOSE 8081
 
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
