@@ -1,12 +1,23 @@
 import axios from 'axios'
 
-const apiURL =
-  import.meta.env.VITE_MODE === 'PROD'
-    ? import.meta.env.VITE_API_URL_PROD
-    : import.meta.env.VITE_API_URL_DEV
+const apiURL = {
+  DEV: import.meta.env.VITE_API_URL_DEV,
+  PROD: import.meta.env.VITE_API_URL_PROD,
+  INTERNAL: import.meta.env.VITE_API_URL_INTERNAL,
+}
+
+const env = import.meta.env.VITE_MODE as keyof typeof apiURL
+
+// const apiURL =
+//   import.meta.env.VITE_MODE === 'PROD'
+//     ? import.meta.env.VITE_API_URL_PROD
+//     : import.meta.env.VITE_API_URL_DEV
+
+console.log(`API URL: ${apiURL[env]}`)
+console.log(`Environment: ${env}`)
 
 const axiosInstance = axios.create({
-  baseURL: apiURL,
+  baseURL: apiURL[env],
   headers: {
     'Content-Type': 'application/json',
   },
