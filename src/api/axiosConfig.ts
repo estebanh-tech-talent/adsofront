@@ -22,7 +22,7 @@ console.log(`Object URL: ${apiURL}`)
 
 const axiosInstance = axios.create({
   // baseURL: apiURL[env],
-  baseURL: 'https://fastapiadso-production.up.railway.app',
+  baseURL: 'https://allowtest.com/api/v1',
   headers: {
     'Content-Type': 'application/json',
   },
