@@ -18,10 +18,10 @@ const env = import.meta.env.VITE_MODE as keyof typeof apiURL
 
 console.log(`API URL: ${apiURL[env]}`)
 console.log(`Environment: ${env}`)
+console.log(`Object URL: ${apiURL}`)
 
 const axiosInstance = axios.create({
   // baseURL: apiURL[env],
-  // baseURL: 'http://fastapiadso.railway.internal',
   baseURL: 'https://fastapiadso-production.up.railway.app',
   headers: {
     'Content-Type': 'application/json',
