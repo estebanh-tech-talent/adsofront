@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axiosInstance from '@/api/axiosConfig'
 
 console.log(import.meta.env.VITE_MODE)
 
@@ -84,7 +84,7 @@ export default {
   methods: {
     async fetchItems() {
       try {
-        const response = await axios.get(this.apiUrl)
+        const response = await axiosInstance.get(this.apiUrl)
         this.items = response.data
       } catch (error) {
         console.error('Error fetching items:', error)
